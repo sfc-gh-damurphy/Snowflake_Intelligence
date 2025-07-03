@@ -685,10 +685,12 @@ Now our Search Service is created:
 
 If your search service hangs in 'Initialize' for more than a few
 minutes, it might have failed. This is going to be fixed in the UI in
-the future. However, right now you can run: *DESC CORTEX SEARCH SERVICE
-FESTIVAL_CONTRACT_SEARCH*; and look at the indexing_error column,
+the future. However, right now you can run the command below and look at the indexing_error column,
 chances are it is a missing permission on an object such as a database,
 schema, table, or warehouse.
+```sql
+desc cortex search Festival_Contract_Search;
+```
 
 # Step 9: Add to Agent
 
