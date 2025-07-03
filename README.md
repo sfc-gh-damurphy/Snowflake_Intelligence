@@ -713,9 +713,14 @@ ACTIVE.
 
 - To resolve this
 
-a) Make sure the default warehouse has USAGE privileges granted to the SNOWFLAKE_INTELLIGENCE_ADMIN_RL role used in this lab, particularly if the state never changes. Cortex search will create a new dynamic table to store this information. If you are having problems, check out the dynamic tables in the Admin section and make sure that table is working properly.
+a) try running the following SQL to get information about why the search service is hung, there is an error column that might give you information on to why this is happening:
+```sql
+desc cortex search Festival_Contract_Search;
+```
 
-b) Ensure that SNOWFLAKE_INTELLIGENCE_ADMIN_RL has access to the table by doing a GRANT on SELECT to the role.
+b) Make sure the default warehouse has USAGE privileges granted to the SNOWFLAKE_INTELLIGENCE_ADMIN_RL role used in this lab, particularly if the state never changes. Cortex search will create a new dynamic table to store this information. If you are having problems, check out the dynamic tables in the Admin section and make sure that table is working properly.
+
+c) Ensure that SNOWFLAKE_INTELLIGENCE_ADMIN_RL has access to the table by doing a GRANT on SELECT to the role.
 
 ![Search Service Active](images/image059.jpg)
 
@@ -736,8 +741,6 @@ search service we created. Let's ask it a question:
 Notice that no SQL is generated or written, as it is using our search
 service. It gives us the answer and the source of the document from
 which this information came.
-
-![Search Service Query](images/image062.jpg)
 
 # Step 11: Review
 
