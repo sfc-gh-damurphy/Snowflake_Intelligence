@@ -218,7 +218,7 @@ will need to load multiple tables. Please unzip the file below
 containing all the lab files and then import each as a table into
 Snowflake through the UI.
 
-[Snowflake Intelligence Festival Data.zip](https://drive.google.com/file/d/1oaI6jEOiNlAEdEfW_RbZQSnNtYWGR7Mg/view?usp=sharing)
+[Snowflake Intelligence Festival Data](/Festival%20Data)
 
 Log into your Snowflake Demo Account and create a space for these tables
 to live through the UI. Let's create a database we will call it
