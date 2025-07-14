@@ -1,0 +1,26 @@
+event_id,event_name,region,event_date,capacity,genre
+1,Instead Fest,Europe,2025-06-13,12296,Rock
+2,Ok Fest,Europe,2025-03-12,21049,Pop
+3,Difficult Fest,Europe,2025-02-05,11717,Country
+4,Wall Fest,Europe,2025-01-23,43698,Jazz
+5,Oil Fest,Europe,2025-01-09,6952,Rock
+6,If Fest,North America,2025-02-25,20247,Country
+7,Nice Fest,North America,2025-06-04,6739,Country
+8,Let Fest,North America,2025-02-20,47590,Country
+9,Father Fest,North America,2025-04-18,19446,Jazz
+10,None Fest,North America,2025-05-31,23231,Rock
+11,Mean Fest,Asia,2025-02-10,32696,EDM
+12,Goal Fest,Asia,2025-03-13,15189,Pop
+13,Fast Fest,Asia,2025-03-28,11698,Rock
+14,Form Fest,Asia,2025-04-08,11338,EDM
+15,Plant Fest,Asia,2025-03-30,44565,EDM
+16,Measure Fest,South America,2025-01-12,35108,Country
+17,Test Fest,South America,2025-02-01,29807,Rock
+18,Training Fest,South America,2025-05-22,24213,Country
+19,Already Fest,South America,2025-04-03,42837,Pop
+20,Age Fest,South America,2025-06-30,9558,Rock
+21,Least Fest,Africa,2025-06-19,19935,EDM
+22,Lot Fest,Africa,2025-01-21,20256,Rock
+23,Commercial Fest,Africa,2025-04-08,23217,Jazz
+24,Own Fest,Africa,2025-06-12,28909,Pop
+25,Especially Fest,Africa,2025-04-05,28283,Pop
