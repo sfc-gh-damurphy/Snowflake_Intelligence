@@ -1,36 +1,5 @@
 # Snowflake Intelligence HOL
 
-Snowflake Intelligence, a new application, empowers users to create and interact with data agents. These agents can access data from platforms like Snowflake and Salesforce to generate visualizations, create simple applications, and facilitate action on insights. Powered by Cortex LLM functions, Analyst, and Search, Snowflake Intelligence offers a curated, enterprise-ready application experience.
-
-The ideal customer for a Snowflake Intelligence user is a business user, such as a sales rep, executive, or marketing manager, who is looking for insights and to take action based on data in their organization. Traditionally, they would have relied on BI applications or manually navigated file search (like SharePoint and Google Drive) and taken manual actions that can now be enhanced and automated with data agents.
-
-Snowflake Intelligence is currently under development. While some workflows in this lab may evolve as we approach production and refine our strategy, the foundational elements like semantic models, agents, and search services will persist. This lab will be updated periodically to reflect the product's progress. It represents the state of Snowflake Intelligence leading up to Summit 2025, as we aimed to provide this training beforehand.
-
-### What you'll do:
-
-This lab explores accessing festival data (ticket sales, customer details, events) and a parsed result of multiple bands' contract information. We'll join these datasets and build a semantic model using synonyms and defining relationships among the tables. This model will then be used in a prompt to retrieve data from Snowflake for end users via a simple chat-like interface. Consequently, users can obtain answers and data visualizations without needing SQL knowledge, understanding unstructured data queries, or data modeling concepts.
-
-Below is an outline of the lab:
-
-  * Ingest data into a database
-  * Create a simple agent
-  * Create a semantic layer
-  * Create a smarter agent using the semantic layer
-  * Create a search service
-  * Update the smart agent to also use the search service
-  * Utilize Snowflake Intelligence
-
------
-
-### Why it matters:
-
-  * **Self-serve data exploration:** Create charts and get instant answers using natural language. With an intuitive interface powered by agentic AI, enable teams to discover trends and analyze data without technical expertise or waiting for custom dashboards.
-  * **Democratize intelligence:** Access and analyze thousands of data sources simultaneously, going beyond basic AI tools that only handle single documents.
-  * **Comprehensive integration:** Seamlessly analyze structured and unstructured data together. Connect insights from spreadsheets, documents, images, and databases simultaneously.
-  * **Automatic security:** Existing Snowflake security controls, including role-based access and data masking, automatically apply to all AI interactions and conversations.
-
------
-
 ## Step 1: Snowflake Intelligence Setup
 
 You will need to enable these features on your demo account. Do this by logging into the deployment (snowflake.okta.com), choosing the correct deployment for your account, and then running this command. At this time (5/15/25), this is the case, but this process will change in the future.
