@@ -260,8 +260,6 @@ We then need to define our relationships with the other tables. By default, no r
 Our first relationship we will define is TICKET\_SALES to EVENT. For every EVENT, there are many ticket sales, and the joining column is EVENT\_ID. Let's define a relationship that represents that:
 
   * **Relationship Name:** `TicketSales_to_Events`
-  * **Join Type:** Inner
-  * **Relationship type:** many\_to\_one
   * **Left Table:** `Ticket_Sales`
   * **Right Table:** `Events`
   * **Relationship Columns:** `EVENT_ID` and `EVENT_ID`
@@ -271,8 +269,6 @@ Our first relationship we will define is TICKET\_SALES to EVENT. For every EVENT
 Let's add a second relationship of customers to tickets:
 
   * **Relationship Name:** `TicketSales_to_Customers`
-  * **Join Type:** Inner
-  * **Relationship type:** many\_to\_one
   * **Left Table:** `Customers`
   * **Right Table:** `Ticket_Sales`
   * **Relationship Columns:** `CUSTOMER_ID` and `CUSTOMER_ID`
