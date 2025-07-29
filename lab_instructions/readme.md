@@ -477,7 +477,7 @@ The service needs to be active before it can function, which will take a few min
 
 Make sure to save the agent after updating it with the new cortex search service:
 
-
+![labimages](images/image063.png)
 
 -----
 
@@ -485,10 +485,12 @@ Make sure to save the agent after updating it with the new cortex search service
 
 Let's go back to Snowflake Intelligence and make sure our new search service is available to query.
 
+![labimages](images/image064.png)
+![labimages](images/image065.png)
 
-Now that we see our Snowflake Data there, we know it will utilize our search service we created. Let's ask it a question:
+Now that we see our Snowflake Data there, we know it will utilize our search service we created. Let's ask it a question: `What is the cancellation policy for the band Algorhythms?`
 
-`What is the cancellation policy for the band Algorhythms?`
+![labimages](images/image066.png)
 
 Notice that no SQL is generated or written, as it is using our search service. It gives us the answer and the source of the document from which this information came.
 
