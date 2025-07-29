@@ -9,11 +9,6 @@ The ideal customer for a Snowflake Intelligence user is a business user, such as
 
 ---
 
-## 🎬 Lab Overview Video
-Watch the [X-minute Lab Overview Video](overview.mp4) for a detailed walkthrough of key lab phases.
-
----
-
 ## 🛠️ Hands-On Lab Overview
 
 In this hands-on lab, you'll step into the shoes of **a Snowflake Developer** tasked with **creating a new agent for Snowflake Intelligence**.
