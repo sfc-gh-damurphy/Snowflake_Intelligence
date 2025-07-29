@@ -1,5 +1,5 @@
 # Snowflake Intelligence HOL
-**Brief tagline emphasizing outcome or theme.**
+**Utilize Agentic AI aginst your Snowflake data and Unstructured Data**
 
 ---
 
