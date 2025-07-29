@@ -30,7 +30,7 @@ FROM (
 );
 
 -- -----------------------------------------------------------------------------
--- Validate YML and semantic layer were created
+-- Validate semantic view was created
 -- -----------------------------------------------------------------------------
 use database si_events_hol;
 use schema public;
