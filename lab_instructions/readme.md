@@ -188,7 +188,6 @@ Lets create a semantic view using cortex analyst:
 ![labimages](images/image021.png)
 
 Go ahead and select create new view:
-![labimages](images/image022.png)
 ![labimages](images/image023.png)
 
 We can choose the SI\_EVENTS\_HOL database and PUBLIC schema we created earlier. Then we can select Semantic Views and enter the following name and description:
