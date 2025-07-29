@@ -1,6 +1,12 @@
 # Snowflake Intelligence HOL
 **Utilize Agentic AI aginst your Snowflake data and Unstructured Data**
 
+Snowflake Intelligence, a new application, empowers users to create and interact with data agents. These agents can access data from platforms like Snowflake and Salesforce to generate visualizations, create simple applications, and facilitate action on insights. Powered by Cortex LLM functions, Analyst, and Search, Snowflake Intelligence offers a curated, enterprise-ready application experience.
+
+The ideal customer for a Snowflake Intelligence user is a business user, such as a sales rep, executive, or marketing manager, who is looking for insights and to take action based on data in their organization. Traditionally, they would have relied on BI applications or manually navigated file search (like SharePoint and Google Drive) and taken manual actions that can now be enhanced and automated with data agents.
+
+> Snowflake Intelligence is currently under development. While some workflows in this lab may evolve as we approach production and refine our strategy, the foundational elements like semantic models, agents, and search services will persist. This lab will be updated periodically to reflect the product's progress. It represents the state of Snowflake Intelligence leading up to Summit 2025, as we aimed to provide this training beforehand.
+
 ---
 
 ## 🎬 Lab Overview Video
