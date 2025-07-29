@@ -22,8 +22,8 @@ Below is an outline of the lab:
   * Update the smart agent to also use the search service
   * Utilize Snowflake Intelligence
 
-*Created by: SE Enablement (Dan Murphy)*
-*July 2025*
+
+
 
 -----
 
@@ -59,8 +59,8 @@ set UI_ENABLE_AI_ML_FEATURE_19 = 'ENABLED'
 
 This will allow you to see the needed navigation in Snowsight.
 
-*Created by: SE Enablement (Dan Murphy)*
-*July 2025*
+
+
 
 -----
 
@@ -70,8 +70,8 @@ This will allow you to see the needed navigation in Snowsight.
   * At this time, Snowflake Intelligence (SI) will utilize your default role. You need to make sure this is set to the role we will create in the lab (directions below).
   * Snowflake Intelligence will also utilize your default warehouse, you must set this up for SI to work.
 
-*Created by: SE Enablement (Dan Murphy)*
-*July 2025*
+
+
 
 -----
 
@@ -82,8 +82,8 @@ Users in Snowflake Intelligence will map to Snowflake users. Over time, we will 
 3.  They need permission to the underlying Cortex Search Service and the ability to call Cortex Analyst.
 4.  They need permission for any underlying data surfaced by an agent.
 
-*Created by: SE Enablement (Dan Murphy)*
-*July 2025*
+
+
 
 -----
 
@@ -117,8 +117,8 @@ DECLARE
 sql_command STRING;
 ```
 
-*Created by: SE Enablement (Dan Murphy)*
-*July 2025*
+
+
 
 -----
 
@@ -152,8 +152,8 @@ create schema if not exists Snowflake_intelligence.agents;
 -- Make SI agents in general discoverable to everyone.
 ```
 
-*Created by: SE Enablement (Dan Murphy)*
-*July 2025*
+
+
 
 -----
 
@@ -186,8 +186,8 @@ Currently, Snowflake Intelligence uses your DEFAULT ROLE, so we need to change o
 
 Go ahead and change your default role to the newly created role. You can do this by selecting your name at the bottom and going to switch role, and choosing the `Snowflake_intelligence_admin_rl`, and when you hover over it, choose set as default, and also make sure this is your selected role.
 
-*Created by: SE Enablement (Dan Murphy)*
-*July 2025*
+
+
 
 -----
 
@@ -197,8 +197,8 @@ Go ahead and log out of your account and log back in, sometimes this resolves so
 
 For our lab, we will use some made-up festival data. To support this, we will need to load multiple tables. Please unzip the file below containing all the lab files and then import each as a table into Snowflake through the UI.
 
-*Created by: SE Enablement (Dan Murphy)*
-*July 2025*
+
+
 
 -----
 
@@ -215,8 +215,8 @@ Let's create the tables we need for this lab. There are a total of 4 tables need
 
 We will load these tables into the public schema.
 
-*Created by: SE Enablement (Dan Murphy)*
-*July 2025*
+
+
 
 -----
 
@@ -224,15 +224,15 @@ To load a table from a file in Snowsight, go into the `SI_Events` database we cr
 
 Name each table the same name as the file you unzipped:
 
-*Created by: SE Enablement (Dan Murphy)*
-*July 2025*
+
+
 
 -----
 
 Open the View Options section in the file format area and make sure that the header is the first line of the document:
 
-*Created by: SE Enablement (Dan Murphy)*
-*July 2025*
+
+
 
 -----
 
@@ -260,8 +260,8 @@ CREATE OR REPLACE API INTEGRATION dora_api_integration
     API_AWS_ROLE_ARN = 'arn:aws:iam::321463406630:role/snowflakeLearnerAssumedRole'
 ```
 
-*Created by: SE Enablement (Dan Murphy)*
-*July 2025*
+
+
 
 -----
 
@@ -308,8 +308,8 @@ CREATE OR REPLACE EXTERNAL FUNCTION util_db.public.se_grader (
     step VARCHAR,
 ```
 
-*Created by: SE Enablement (Dan Murphy)*
-*July 2025*
+
+
 
 -----
 
@@ -334,8 +334,8 @@ grant usage on schema util_db.public to role public;
 grant usage on function util_db.public.se_grader(varchar, boolean, integer, integer, varchar) to role public;
 ```
 
-*Created by: SE Enablement (Dan Murphy)*
-*July 2025*
+
+
 
 -----
 
@@ -347,8 +347,8 @@ grant usage on function util_db.public.se_grader(varchar, boolean, integer, inte
 
 Go to Snowflake, and the Agents section should now work with the config tables we created above. The page will keep attempting to redraw at this point, but that is expected for now. Go ahead and click on Create Agent.
 
-*Created by: SE Enablement (Dan Murphy)*
-*July 2025*
+
+
 
 -----
 
@@ -359,8 +359,8 @@ Let's create a very simple agent.
 
 Refresh the screen, and we will see the new agent created.
 
-*Created by: SE Enablement (Dan Murphy)*
-*July 2025*
+
+
 
 -----
 
@@ -370,8 +370,8 @@ To easily navigate while using the Snowflake Intelligence application, open a ne
 
 Now we can see our agent that we created in the dropdown and be able to interact with Snowflake intelligence easily.
 
-*Created by: SE Enablement (Dan Murphy)*
-*July 2025*
+
+
 
 -----
 
@@ -381,8 +381,8 @@ Go ahead and query Snowflake Intelligence. Let's ask this: `What can you tell me
 
 We have currently developed a basic agent lacking access to data within your Snowflake account. It solely interacts with Claude. To enhance its intelligence, we need to integrate a semantic model and connect it to the agent, thereby providing improved context.
 
-*Created by: SE Enablement (Dan Murphy)*
-*July 2025*
+
+
 
 -----
 
@@ -392,8 +392,8 @@ Let's now build a more intelligent agent that analyzes the data within Snowflake
 
 Go ahead and select create new:
 
-*Created by: SE Enablement (Dan Murphy)*
-*July 2025*
+
+
 
 -----
 
@@ -404,15 +404,15 @@ We can choose the `SI_EVENTS_HOL` database and `PUBLIC` schema we created earlie
 
 Let's select our tables from the SI\_EVENTS\_HOL data that we imported at the beginning of the lab.
 
-*Created by: SE Enablement (Dan Murphy)*
-*July 2025*
+
+
 
 -----
 
 Then we can select the columns to choose. Let's just select all columns by choosing the top checkbox:
 
-*Created by: SE Enablement (Dan Murphy)*
-*July 2025*
+
+
 
 -----
 
@@ -422,8 +422,8 @@ When we click 'Create and Save' it will generate a starter semantic model for us
 
 We can see that it has already created a description as well as some other details, like synonyms. Let's go ahead and add 'show' and 'concert' to the list of synonyms for `EVENT_NAME` in the `EVENTS` table.
 
-*Created by: SE Enablement (Dan Murphy)*
-*July 2025*
+
+
 
 -----
 
@@ -431,8 +431,8 @@ We can see that it has already created a description as well as some other detai
 
 The model incorrectly identified `EVENT_ID` as a fact due to its numerical data type, but it is actually a dimensional column. This can be easily corrected by moving it to the dimensions section in the edit menu. It is crucial to review and adjust the model after Snowflake's initial column categorization.
 
-*Created by: SE Enablement (Dan Murphy)*
-*July 2025*
+
+
 
 -----
 
@@ -456,8 +456,8 @@ We also need to assign unique values option to primary keys. We will do this for
 3.  **Events**
       * `Event_ID`
 
-*Created by: SE Enablement (Dan Murphy)*
-*July 2025*
+
+
 
 -----
 
@@ -469,8 +469,8 @@ Do this for all the listed tables above. Then you will need to save the semantic
 
 I can test this model right now by going to the side window and putting in the following prompt: `What are the different events in Europe`
 
-*Created by: SE Enablement (Dan Murphy)*
-*July 2025*
+
+
 
 -----
 
@@ -491,8 +491,8 @@ Our first relationship we will define is `TICKET_SALES` to `EVENT`. For every `E
   * **Right Table:** `Events`
   * **Relationship Columns:** `EVENT_ID` and `EVENT_ID`
 
-*Created by: SE Enablement (Dan Murphy)*
-*July 2025*
+
+
 
 -----
 
@@ -505,22 +505,22 @@ Let's add a second relationship of customers to tickets:
   * **Right Table:** `Ticket_Sales`
   * **Relationship Columns:** `CUSTOMER_ID` and `CUSTOMER_ID`
 
-*Created by: SE Enablement (Dan Murphy)*
-*July 2025*
+
+
 
 -----
 
 Now we have two relationships set up in our semantic model. Let's go ahead and test them using the prompt on the right side. We can ask this: `How many ticket sales were there for Difficult Fest?`
 
-*Created by: SE Enablement (Dan Murphy)*
-*July 2025*
+
+
 
 -----
 
 We can see that it was able to utilize our join and see how many tickets were sold for that event by joining the two tables together we defined in our relationship. We can also ask it to '`Count the total customers by customer region that went to Difficult Fest`', and this should span all of our tables in our semantic model and give us values:
 
-*Created by: SE Enablement (Dan Murphy)*
-*July 2025*
+
+
 
 -----
 
@@ -530,20 +530,20 @@ Excellent\! This functionality is operating as anticipated.
 
 Since these queries returned the correct values, we can add them as verified queries, which will fuel our model's improvement.
 
-*Created by: SE Enablement (Dan Murphy)*
-*July 2025*
+
+
 
 -----
 
-*Created by: SE Enablement (Dan Murphy)*
-*July 2025*
+
+
 
 -----
 
 These will now show up under verified queries in our model definition:
 
-*Created by: SE Enablement (Dan Murphy)*
-*July 2025*
+
+
 
 -----
 
@@ -551,8 +551,8 @@ These will now show up under verified queries in our model definition:
 
 When you are done, make sure you save the model.
 
-*Created by: SE Enablement (Dan Murphy)*
-*July 2025*
+
+
 
 -----
 
@@ -567,8 +567,8 @@ We will use the following information:
 
 After those are filled in, go ahead and click '+ Semantic Model', and attach the semantic model we created earlier.
 
-*Created by: SE Enablement (Dan Murphy)*
-*July 2025*
+
+
 
 -----
 
@@ -576,8 +576,8 @@ Then go ahead and edit the agent by clicking on it.
 
 Then go to edit.
 
-*Created by: SE Enablement (Dan Murphy)*
-*July 2025*
+
+
 
 -----
 
@@ -591,15 +591,15 @@ Then choose tools and add the semantic model you created from earlier:
   * Write a description: `This is our festival data that we have stored in snowflake in tables and structured data`
   * Click `Add the Semantic model`
 
-*Created by: SE Enablement (Dan Murphy)*
-*July 2025*
+
+
 
 -----
 
 After adding be sure to click save in the agent editor.
 
-*Created by: SE Enablement (Dan Murphy)*
-*July 2025*
+
+
 
 -----
 
@@ -609,22 +609,22 @@ Let's go back to Snowflake Intelligence to see our new agent, which leverages ou
 
 Let's ask it a question: `Show me the top 5 events by tickets sold.`
 
-*Created by: SE Enablement (Dan Murphy)*
-*July 2025*
+
+
 
 -----
 
 Fantastic, it gave us an answer with a chart of the top 5 events\! I can open the SQL section and see the join in the SQL.
 
-*Created by: SE Enablement (Dan Murphy)*
-*July 2025*
+
+
 
 -----
 
 We can ask another question: `What is the ratio of ticket types purchased for Instead Fest?`
 
-*Created by: SE Enablement (Dan Murphy)*
-*July 2025*
+
+
 
 -----
 
@@ -632,8 +632,8 @@ A third question I could ask is: `Did any one customer go to multiple shows?` Th
 
 These answers appear to be correct. If they were incorrect, the first step would be to review the semantic model. This review would focus on verifying the accuracy of the defined relationships.
 
-*Created by: SE Enablement (Dan Murphy)*
-*July 2025*
+
+
 
 -----
 
@@ -645,15 +645,15 @@ We have document data that has been parsed and loaded into a table named `Contra
 
 We can create it in our `SNOWFLAKE_INTELLIGENCE.CONFIG` database and schema, and call it `Festival_Contract_Search`.
 
-*Created by: SE Enablement (Dan Murphy)*
-*July 2025*
+
+
 
 -----
 
 Going to the next screen, it asks for the table that it wants to index. We will select a table that we uploaded earlier. This is in the `SI_EVENTS_HOL.PUBLIC` and our table is called `CONTRACTS`.
 
-*Created by: SE Enablement (Dan Murphy)*
-*July 2025*
+
+
 
 -----
 
@@ -661,8 +661,8 @@ The next screen asks us to choose which column we want to be able to search. In 
 
 Next, it is asking what attributes we want to bring in. We will choose both `DOCUMENT_TITLE` and `URL`.
 
-*Created by: SE Enablement (Dan Murphy)*
-*July 2025*
+
+
 
 -----
 
@@ -670,8 +670,8 @@ We will leave all columns on the next page selected:
 
 As this is a demonstration with unchanging data, the chosen lag time is inconsequential. Therefore, a 1-day lag can be applied.
 
-*Created by: SE Enablement (Dan Murphy)*
-*July 2025*
+
+
 
 -----
 
@@ -679,8 +679,8 @@ Now our Search Service is created:
 
 **NOTE:** If your search service hangs in 'Initialize' for more than a few minutes, it might have failed. This is going to be fixed in the Ul in the future. However, right now you can run: `DESC CORTEX SEARCH SERVICE FESTIVAL_CONTRACT_SEARCH;` and look at the `indexing_error` column, chances are it is a missing permission on an object such as a database, schema, table, or warehouse.
 
-*Created by: SE Enablement (Dan Murphy)*
-*July 2025*
+
+
 
 -----
 
@@ -696,8 +696,8 @@ The service needs to be active before it can function, which will take a few min
 
 **NOTE:** If your search service hangs in 'Initialize' for more than a few minutes, it might have failed. This is going to be fixed in the Ul in the future. However, right now you can run: `DESC CORTEX SEARCH SERVICE FESTIVAL_CONTRACT_SEARCH;` and look at the `indexing_error` column, chances are it is a missing permission on an object such as a database, schema, table, or warehouse.
 
-*Created by: SE Enablement (Dan Murphy)*
-*July 2025*
+
+
 
 -----
 
@@ -707,13 +707,13 @@ Make sure to save the agent after updating it with the new cortex search service
 
 Let's go back to Snowflake Intelligence and make sure our new search service is available to query, and then...
 
-*Created by: SE Enablement (Dan Murphy)*
-*July 2025*
+
+
 
 -----
 
-*Created by: SE Enablement (Dan Murphy)*
-*July 2025*
+
+
 
 -----
 
@@ -738,8 +738,8 @@ Our steps were:
 
 Customers can now easily build a chatbot-like interface for analysts and search their Snowflake assets using simple wizards, requiring minimal coding. This eliminates the need for complex...
 
-*Created by: SE Enablement (Dan Murphy)*
-*July 2025*
+
+
 
 -----
 
@@ -788,8 +788,8 @@ SELECT util_db.public.se_grader (
     (actual = expected),
 ```
 
-*Created by: SE Enablement (Dan Murphy)*
-*July 2025*
+
+
 
 -----
 
@@ -836,8 +836,8 @@ FROM (
     1 AS expected,
 ```
 
-*Created by: SE Enablement (Dan Murphy)*
-*July 2025*
+
+
 
 -----
 
@@ -852,5 +852,5 @@ If all validations return you have completed the Snowflake Intelligence Lab.
 
 We recommend resetting your default role and warehouse to `ACCOUNTADMIN`. While not strictly necessary, this can help prevent issues in other labs.
 
-*Created by: SE Enablement (Dan Murphy)*
-*July 2025*
+
+
