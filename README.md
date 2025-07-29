@@ -1,7 +1,5 @@
-# College of XX XXX HOL: Alternate Business Title
+# Snowflake Intelligence HOL
 **Brief tagline emphasizing outcome or theme.**
-
-![Lab Architecture](images/architecture_diagram.png)
 
 ---
 
@@ -12,47 +10,50 @@ Watch the [X-minute Lab Overview Video](overview.mp4) for a detailed walkthrough
 
 ## 🛠️ Hands-On Lab Overview
 
-In this hands-on lab, you'll step into the shoes of **XXX** tasked with **XXX**.
+In this hands-on lab, you'll step into the shoes of **a Snowflake Developer** tasked with **creating a new agent for Snowflake Intelligence**.
 
 ### 📋 What You’ll Do:
-List of 4–6 concrete tasks participants will complete. Clearly bold important terms.
-- **Task 1:** [Brief description of the first hands-on activity.]
-- **Task 2:** [Brief description of the second hands-on activity.]
-- **Task 3:** [Brief description of the third hands-on activity.]
-- **Task 4 (Optional)**: [Additional extension or customization step.]
+This lab explores accessing festival data (ticket sales, customer details, events) and a parsed result of multiple bands' contract information. We'll join these datasets and build a semantic model using synonyms and defining relationships among the tables. This model will then be used in a prompt to retrieve data from Snowflake for end users via a simple chat-like interface. Consequently, users can obtain answers and data visualizations without needing SQL knowledge, understanding unstructured data queries, or data modeling concepts.
+
+- **Ingest data into a database** 
+- **Create a simple agent** 
+- **Create a semantic view** 
+- **Create a smarter agent using the semantic layer**: 
+- **Create a search service**: 
+- **Update the smart agent to also use the search service**: 
+- **Utilize Snowflake Intelligence**: 
+
+
 
 ### ⏲️ Estimated Lab Timeline
 
 Provide a brief agenda to help SEs understand pacing:
 
-- **Phase 1 (Env setup & model training):** ~45 min
-- **Phase 2 (Model registry & batch inference):** ~30 min
-- **Phase 3 (Monitoring & cleanup):** ~15 min
-
-Include checkpoints (DORAs), recommended "stop points," and common customer questions.
+- **Phase 1 (Env setup):** ~5 min
+- **Phase 2 ([creating sematic and cortex search](/lab_instructions/readme.md)):** ~30 min
+- **Phase 3 (Testing Results in Snowflake Intelligence):** ~10 min
   
 ---
 
 ## 📖 Table of Contents
 
-- [Why this Matters](#why-this-matters)
-- [Suggested Discovery Questions](#suggested-discovery-questions)
-- [Repository Structure](#repository-structure)
-- [Prerequisites & Setup Details](#prerequisites--setup-details)
-- [Estimated Lab Timeline](#estimated-lab-timeline)
-- [Placeholder & Naming Conventions](#placeholder--naming-conventions)
-- [Troubleshooting & FAQ](#troubleshooting--faq)
-- [Cleanup & Cost-Stewardship Procedures](#cleanup--cost-stewardship-procedures)
-- [Advanced Concepts (Salted in Training)](#advanced-concepts-salted-in-training)
-- [Links to Internal Resources & Helpful Documents](#links-to-internal-resources--helpful-documents)
+- [Why this Matters](#-why-this-matters)
+- [Suggested Discovery Questions](#-suggested-discovery-questions)
+- [Repository Structure](#-repository-structure)
+- [Prerequisites & Setup Details](#-prerequisites--setup-details)
+- [Estimated Lab Timeline](#-estimated-lab-timeline)
+- [Troubleshooting & FAQ](#-troubleshooting--faq)
+- [Cleanup & Cost-Stewardship Procedures](#-cleanup--cost-stewardship-procedures)
+- [Links to Internal Resources & Helpful Documents](#-links-to-internal-resources--helpful-documents)
 
 ---
 
 ## 📌 Why this Matters
 
-- **Business value:** Clearly explain how this lab impacts KPIs (e.g. accelerates time-to-insight by X%, reduces manual processes by Y hours per month).
-- **Pricing impact:** Highlight compute and storage cost expectations and best practices for efficient resource use (e.g., turning off resources when idle to reduce costs by Z%).
-- **Customer stories:** Link to decks, blogs or other information to promote reference stories.
+  * **Self-serve data exploration:** Create charts and get instant answers using natural language. With an intuitive interface powered by agentic AI, enable teams to discover trends and analyze data without technical expertise or waiting for custom dashboards.
+  * **Democratize intelligence:** Access and analyze thousands of data sources simultaneously, going beyond basic AI tools that only handle single documents.
+  * **Comprehensive integration:** Seamlessly analyze structured and unstructured data together. Connect insights from spreadsheets, documents, images, and databases simultaneously.
+  * **Automatic security:** Existing Snowflake security controls, including role-based access and data masking, automatically apply to all AI interactions and conversations.
 
 ---
 
@@ -60,9 +61,9 @@ Include checkpoints (DORAs), recommended "stop points," and common customer ques
 
 Provide **5 to 6 open-ended questions** for customer conversations related to this HOL.
 
-- "How are you currently handling [specific task or issue related to this HOL]?"
-- "What metrics matter most when evaluating [specific task or issue related to this HOL]?"
-- "Have you faced any security or compliance roadblocks with [specific task or issue related to this HOL]?"
+- "How are you currently handling creating agentic AI solutions that search both structured data and unstructured data?"
+- "What metrics matter most when evaluating speed to solutions and easy access from multiple personas?"
+- "Have you faced any security or compliance roadblocks with utilizeing LLMs and Agentic AI?"
 - "How would you customize this pattern for your environment?"
 
 ---
@@ -71,17 +72,12 @@ Provide **5 to 6 open-ended questions** for customer conversations related to th
 
 ```bash
 ├── README.md           # Main entry point
-├── config/             # Configuration templates, credentials
-├── code/               # SQL/Python scripts for automation
-├── notebooks/          # Interactive Jupyter notebooks
+├── config/             # Configuration for DORA and Grading
 ├── data/               # Datasets (CSV, JSON) or external links
 ├── images/             # Diagrams and visual assets
-├── lab_instructions/   # Step-by-step detailed instructions
-│ ├── phase1_task1.md
-│ ├── phase2_task2.md
-│ └── phase3_task3.md
+├── lab_instructions    # Step-by-step detailed instructions
+│ ├── images            # images for lab walkthrough
 └── troubleshooting/    # Common issues and resolutions
-└── faq.md
 ```
 ---
 
@@ -89,19 +85,9 @@ Provide **5 to 6 open-ended questions** for customer conversations related to th
 
 Internally helpful setup requirements:
 
-- **Knowledge prerequisites:** List required skills or prior knowledge.
-- **Account and entitlement checks:** Necessary roles/users, network policies, external functions.
-- **Hardware/software:** Supported browsers, recommended accounts, required Python packages.
-
----
-
-## 🔖 Placeholder & Naming Conventions
-
-Clearly define naming conventions:
-
-- Databases/schemas/tables: `PROJ_DEMO_<your initials>_HOL`
-- Model versions: `COLLEGE_AI_HOL_<MODEL_NAME>_v1`
-- Secrets management: Safely store credentials and API keys (never commit to GitHub).
+- **Knowledge prerequisites:** A basic understanding of LLMs and how you can utilize them. Basic Snowflake knowledge to move around the product as needed.
+- **Account and entitlement checks:** This is listed in the [lab directions](/lab_instructions/readme.md)
+- **Hardware/software:** All browsers, AWS accounts recommended due to the LLM availability
 
 ---
 
@@ -120,20 +106,12 @@ Provide internal Slack channels or support queue links.
 ## 🧹 Cleanup & Cost-Stewardship Procedures
 
 🗑 **Cleanup Instructions:**
-- Run the command `DROP WAREHOUSE IF EXISTS [your warehouse];` in Snowflake after lab completion.
-- Immediately shut down your SageMaker instance through AWS Console:
-  - Navigate to SageMaker > JupyterLab Spaces.
-  - Stop or delete your workspace.
+- In the lab we setup the cortex search service to refresh daily. Go ahead and delete this cortex search service
+- Drop the HOL database if no long desired
+```sql
+drop database SI_EVENTS_HOL
+```
 
----
-
-## 📘 Advanced Concepts (Salted in Training)
-
-Brief callouts to deeper internal learning topics:
-
-- **Topic 1:** Brief deeper context.
-- **Topic 2:** Brief deeper context.
-- **Topic 3:** Brief deeper context.
 
 ---
 
@@ -148,12 +126,11 @@ Brief callouts to deeper internal learning topics:
 
 ## 👤 Author & Support
 
-**Lab created by:** [Your Name] – [Your Job Title or Team]  
-**Created on:** [Month DD, YYYY] | **Last updated:** [Month DD, YYYY]
+**Lab created by:** Dan Murphy – SE Enablement Senior Manager 
+**Created on:** [July 28, 2025] | **Last updated:** [July 28, 2025]
 
 💬 **Need Help or Have Feedback?**  
-- Slack Channel: [#your-slack-channel-name](https://your-slack-channel-link)  
-- Slack DM: [@YourSlackUsername](https://your-direct-slack-profile-link)  
-- Email: [your.email@example.com](mailto:your.email@example.com)
+- Slack DM: [@dan.murphy](https://snowflake.enterprise.slack.com/team/WEJR92JS2)  
+- Email: [dan.murphy@snowflake.com](mailto:dan.murphy@snowflake.com)
 
 🌟 *We greatly value your feedback to continuously improve our HOL experiences!*
