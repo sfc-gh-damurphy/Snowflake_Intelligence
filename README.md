@@ -127,7 +127,7 @@ drop database SI_EVENTS_HOL
 ## 👤 Author & Support
 
 **Lab created by:** Dan Murphy – SE Enablement Senior Manager 
-**Created on:** [July 28, 2025] | **Last updated:** [July 28, 2025]
+- **Created on:** July 28, 2025 | **Last updated:** July 28, 2025
 
 💬 **Need Help or Have Feedback?**  
 - Slack DM: [@dan.murphy](https://snowflake.enterprise.slack.com/team/WEJR92JS2)  
