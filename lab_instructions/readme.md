@@ -8,8 +8,6 @@ Snowflake Intelligence is currently under development. While some workflows in t
 
 ### What you'll do:
 
-It is recommended that you download this document from Compass and run it from your GDrive. This will make copying and pasting easier, as formatting can sometimes go wrong when copying directly from Compass.
-
 This lab explores accessing festival data (ticket sales, customer details, events) and a parsed result of multiple bands' contract information. We'll join these datasets and build a semantic model using synonyms and defining relationships among the tables. This model will then be used in a prompt to retrieve data from Snowflake for end users via a simple chat-like interface. Consequently, users can obtain answers and data visualizations without needing SQL knowledge, understanding unstructured data queries, or data modeling concepts.
 
 Below is an outline of the lab:
@@ -174,9 +172,9 @@ Go ahead and log out of your account and log back in, sometimes this resolves so
 
 ## Step 2: Load Festival Data
 
-For our lab, we will use some made-up festival data. To support this, we will need to load multiple tables. Please unzip the file below containing all the lab files and then import each as a table into Snowflake through the UI.
+For our lab, we will use some made-up festival data. To support this, we will need to load multiple tables. Please go to the folder and get all the files listed there.
 
-[Snowflake Intelligence Festival Data.zip](https://www.google.com/search?q=![labimages](images/Snowflake%2520Intelligence%2520Festival%2520Data.zip)
+[Snowflake Intelligence Festival Data](/data)
 
 Log into your Snowflake Demo Account and create a space for these tables to live through the UI. Let's create a database we will call it `SI_EVENTS_HOL` make sure to create it with the role `Snowflake_intelligence_admin_rl`:
 
