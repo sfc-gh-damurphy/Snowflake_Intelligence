@@ -32,8 +32,10 @@ FROM (
 -- -----------------------------------------------------------------------------
 -- Validate YML and semantic layer were created
 -- -----------------------------------------------------------------------------
-USE DATABASE SNOWFLAKE_INTELLIGENCE;
-USE SCHEMA CONFIG;
+use database si_events_hol;
+use schema public;
+
+SHOW SEMANTIC VIEWS LIKE 'music_festival';
 
 SELECT
     util_db.public.se_grader(
@@ -47,9 +49,8 @@ FROM (
     SELECT
         'SEDW31' AS step,
         (
-            SELECT COUNT(*)
-            FROM DIRECTORY(@semantic_models)
-            WHERE RELATIVE_PATH LIKE 'music_festival.yaml'
+            SELECT COUNT(*) 
+            FROM TABLE(RESULT_SCAN(LAST_QUERY_ID()))
         ) AS actual,
         1 AS expected,
         'Semantic Model was created for Snowflake Intelligence' AS description
