@@ -72,12 +72,12 @@ Provide **5 to 6 open-ended questions** for customer conversations related to th
 
 ```bash
 ├── README.md           # Main entry point
-├── config/             # Configuration for DORA and Grading
-├── data/               # Datasets (CSV, JSON) or external links
-├── images/             # Diagrams and visual assets
+├── config             # Configuration for DORA and Grading
+├── data               # Datasets (CSV, JSON) or external links
+├── images             # Diagrams and visual assets
 ├── lab_instructions    # Step-by-step detailed instructions
 │ ├── images            # images for lab walkthrough
-└── troubleshooting/    # Common issues and resolutions
+└── troubleshooting    # Common issues and resolutions
 ```
 ---
 
