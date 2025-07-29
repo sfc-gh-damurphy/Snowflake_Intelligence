@@ -249,7 +249,7 @@ We can see that it has already created a description as well as some other detai
 
 The model incorrectly identified EVENT\_ID as a fact due to its numerical data type, but it is actually a dimensional column. This can be easily corrected by moving it to the dimensions section in the edit menu. It is crucial to review and adjust the model after Snowflake's initial column categorization.
 
-
+![labimages](images/image028.png)
 
 We will need to do this for the following incorrectly identified columns:
 
@@ -273,15 +273,17 @@ We also need to assign unique values option to primary keys. We will do this for
 
 This is done by editing each dimension and then checking the box for unique identifier:
 
-
+![labimages](images/image029.png)
 
 Do this for all the listed tables above. Then you will need to save the semantic model and refresh the page.
+
+![labimages](images/image030.png)
 
 ### Test the Model
 
 I can test this model right now by going to the side window and putting in the following prompt: `What are the different events in Europe`
 
-
+![labimages](images/image031.png)
 
 Then it will go against my model and then write SQL, and then execute that SQL against my model.
 
@@ -298,8 +300,7 @@ Our first relationship we will define is TICKET\_SALES to EVENT. For every EVENT
   * **Right Table:** `Events`
   * **Relationship Columns:** `EVENT_ID` and `EVENT_ID`
 
-![labimages](images/image028.png)
-![labimages](images/image029.png)
+![labimages](images/image032.png)
 
 Let's add a second relationship of customers to tickets:
 
@@ -310,15 +311,17 @@ Let's add a second relationship of customers to tickets:
   * **Right Table:** `Ticket_Sales`
   * **Relationship Columns:** `CUSTOMER_ID` and `CUSTOMER_ID`
 
-![labimages](images/image030.png)
+![labimages](images/image033.png)
+![labimages](images/image034.png)
 
 Now we have two relationships set up in our semantic model. Let's go ahead and test them using the prompt on the right side. We can ask this: `How many ticket sales were there for Difficult Fest?`
+![labimages](images/image035.png)
 
-![labimages](images/image031.png)
 
-We can see that it was able to utilize our join and see how many tickets were sold for that event by joining the two tables together we defined in our relationship. We can also ask it to 'Count the total customers by customer region that went to Difficult Fest', and this should span all of our tables in our semantic model and give us values:
+We can see that it was able to utilize our join and see how many tickets were sold for that event by joining the two tables together we defined in our relationship. 
 
-![labimages](images/image032.png)
+We can also ask it to `Count the total customers by customer region that went to Difficult Fest`, and this should span all of our tables in our semantic model and give us values:
+![labimages](images/image036.png)
 
 Excellent\! This functionality is operating as anticipated.
 
@@ -326,18 +329,18 @@ Excellent\! This functionality is operating as anticipated.
 
 Since these queries returned the correct values, we can add them as verified queries, which will fuel our model's improvement.
 
-![labimages](images/image033.png)
-![labimages](images/image034.png)
+![labimages](images/image037.png)
+![labimages](images/image038.png)
 
 These will now show up under verified queries in our model definition:
 
-![labimages](images/image035.png)
+![labimages](images/image039.png)
 
 ### Save the Model
 
 When you are done, make sure you save the model:
 
-![labimages](images/image036.png)
+![labimages](images/image040.png)
 
 -----
 
@@ -345,22 +348,26 @@ When you are done, make sure you save the model:
 
 Let's go back to the agents now and create a new Agent.
 
-![labimages](images/image037.png)
+![labimages](images/image041.png)
 
 We will use the following information:
 
   * **Name:** `Music_Festival_Agent`
-  * **Description:** An agent that can return information about music festival events and ticket sales
+  * **Description:** `An agent that can return information about music festival events and ticket sales`
 
-![labimages](images/image038.png)
 
-After those are filled in, go ahead and click '+ Semantic Model', and attach the semantic model we created earlier. Then go ahead and edit the agent by click on it.
 
-![labimages](images/image039.png)
+After those are filled in, go ahead and click '+ Semantic Model', and attach the semantic model we created earlier. 
+
+![labimages](images/image042.png)
+
+Then go ahead and edit the agent by click on it.
+
+![labimages](images/image043.png)
 
 Then go to edit:
 
-![labimages](images/image040.png)
+![labimages](images/image044.png)
 
 Then choose tools and add the semantic model you created from earlier:
 
@@ -370,37 +377,40 @@ Then choose tools and add the semantic model you created from earlier:
   * Choose the warehouse: Snowflake\_Intelligence\_WH
   * Choose the Query Timeout: 600
   * Write a description: This is our festival data that we have stored in snowflake in tables and structured data
-  * Click Add the Semantic model
 
-![labimages](images/image041.png)
+Click Add the Semantic model
+
+![labimages](images/image045.png)
 
 After adding be sure to click save in the agent editor.
 
-![labimages](images/image042.png)
+![labimages](images/image046.png)
 
 -----
 
 ## Step 7: Test with Smart Agent
 
-Let's go back to Snowflake Intelligence to see our new agent, which leverages our semantic model. Either click Snowflake Intelligence or go to your Snowflake Intelligence tab and refresh the page. We can now see the Music Festival Agent.
+Let's go back to Snowflake Intelligence to see our new agent, which leverages our semantic model. Either click Snowflake Intelligence or go to your Snowflake Intelligence tab and refresh the page. 
 
-![labimages](images/image043.png)
+We can now see the Music Festival Agent.
+
+![labimages](images/image047.png)
 
 Let's ask it a question: `Show me the top 5 events by tickets sold.`
 
-![labimages](images/image044.png)
+![labimages](images/image048.png)
 
 Fantastic, it gave us an answer with a chart of the top 5 events\! I can open the SQL section and see the join in the SQL.
 
-![labimages](images/image045.png)
+![labimages](images/image049.png)
 
 We can ask another question: `What is the ratio of ticket types purchased for Instead Fest?`
 
-![labimages](images/image046.png)
+![labimages](images/image050.png)
 
 A third question I could ask is: `Did any one customer go to multiple shows?` This would utilize a synonym we created (show) as well as utilize the relationship we created to the customers table:
 
-![labimages](images/image047.png)
+![labimages](images/image051.png)
 
 These answers appear to be correct. If they were incorrect, the first step would be to review the semantic model. This review would focus on verifying the accuracy of the defined relationships and identifying any potential synonyms that could enhance the model's intelligence and robustness.
 
@@ -410,38 +420,41 @@ These answers appear to be correct. If they were incorrect, the first step would
 
 We have document data that has been parsed and loaded into a table named Contracts from a Contracts.csv file. To enable searching of this text data, we will create a search service. This can be done by navigating to Al & ML, then Cortex Search, and following the wizard.
 
-![labimages](images/image048.png)
-![labimages](images/image049.png)
-
-We can create it in our SNOWFLAKE\_INTELLIGENCE.CONFIG database and schema, and call it `Festival_Contract_Search`.
-
-![labimages](images/image050.png)
-
-Going to the next screen, it asks for the table that it wants to index. We will select a table that we uploaded earlier. This is in the SI\_EVENTS\_HOL.PUBLIC and our table is called CONTRACTS.
-
-![labimages](images/image051.png)
-
-The next screen asks us to choose which column we want to be able to search. In our case, the column name is TEXT. Go ahead and select that column from the list.
-
 ![labimages](images/image052.png)
-
-Next, it is asking what attributes we want to bring in. We will choose both DOCUMENT\_TITLE and URL:
 
 ![labimages](images/image053.png)
 
-We will leave all columns on the next page selected:
+We can create it in our SNOWFLAKE\_INTELLIGENCE.CONFIG database and schema, and call it `Festival_Contract_Search`.
 
 ![labimages](images/image054.png)
 
-As this is a demonstration with unchanging data, the chosen lag time is inconsequential. Therefore, a 1-day lag can be applied.
+Going to the next screen, it asks for the table that it wants to index. We will select a table that we uploaded earlier. This is in the SI\_EVENTS\_HOL.PUBLIC and our table is called CONTRACTS.
 
 ![labimages](images/image055.png)
 
-Now our Search Service is created:
+
+The next screen asks us to choose which column we want to be able to search. In our case, the column name is TEXT. Go ahead and select that column from the list.
 
 ![labimages](images/image056.png)
 
-**NOTE:** If your search service hangs in 'Initialize' for more than a few minutes, it might have failed. This is going to be fixed in the UI in the future. However, right now you can run: `DESC CORTEX SEARCH SERVICE FESTIVAL_CONTRACT_SEARCH;` and look at the indexing\_error column, chances are it is a missing permission on an object such as a database, schema, table, or warehouse.
+Next, it is asking what attributes we want to bring in. We will choose both DOCUMENT\_TITLE and URL:
+
+![labimages](images/image057.png)
+
+We will leave all columns on the next page selected:
+
+![labimages](images/image058.png)
+
+
+As this is a demonstration with unchanging data, the chosen lag time is inconsequential. Therefore, a 1-day lag can be applied.
+
+![labimages](images/image059.png)
+
+Now our Search Service is created:
+
+![labimages](images/image060.png)
+
+> **NOTE:** If your search service hangs in 'Initialize' for more than a few minutes, it might have failed. This is going to be fixed in the UI in the future. However, right now you can run: `DESC CORTEX SEARCH SERVICE FESTIVAL_CONTRACT_SEARCH;` and look at the indexing\_error column, chances are it is a missing permission on an object such as a database, schema, table, or warehouse.
 
 -----
 
@@ -451,19 +464,20 @@ We will reuse the previously created "Music Festival Agent" and integrate the Se
 
 Then choose Tools and add the Festival Contract Search Cortex search agent you created. Choose the URL and Document Title as shown below:
 
-![labimages](images/image057.png)
+![labimages](images/image061.png)
+
 
 We will then add the search service by selecting where we created it, which was in SNOWFLAKE\_INTELLIGENCE.CONFIG we will call it Festival Contract Documents, and make sure we define the URL column in our search service, which is called URL:
 
 The service needs to be active before it can function, which will take a few minutes. Completion is indicated when the Serving State shows as ACTIVE.
 
-**NOTE:** If your search service hangs in 'Initialize' for more than a few minutes, it might have failed. This is going to be fixed in the UI in the future. However, right now you can run: `DESC CORTEX SEARCH SERVICE FESTIVAL_CONTRACT_SEARCH;` and look at the indexing\_error column, chances are it is a missing permission on an object such as a database, schema, table, or warehouse.
+> **NOTE:** If your search service hangs in 'Initialize' for more than a few minutes, it might have failed. This is going to be fixed in the UI in the future. However, right now you can run: `DESC CORTEX SEARCH SERVICE FESTIVAL_CONTRACT_SEARCH;` and look at the indexing\_error column, chances are it is a missing permission on an object such as a database, schema, table, or warehouse.
 
-![labimages](images/image058.png)
+![labimages](images/image062.png)
 
 Make sure to save the agent after updating it with the new cortex search service:
 
-![labimages](images/image059.png)
+
 
 -----
 
@@ -471,8 +485,6 @@ Make sure to save the agent after updating it with the new cortex search service
 
 Let's go back to Snowflake Intelligence and make sure our new search service is available to query.
 
-![labimages](images/image060.png)
-![labimages](images/image061.png)
 
 Now that we see our Snowflake Data there, we know it will utilize our search service we created. Let's ask it a question:
 
@@ -480,7 +492,7 @@ Now that we see our Snowflake Data there, we know it will utilize our search ser
 
 Notice that no SQL is generated or written, as it is using our search service. It gives us the answer and the source of the document from which this information came.
 
-![labimages](images/image062.png)
+
 
 -----
 
