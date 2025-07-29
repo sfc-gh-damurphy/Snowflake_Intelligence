@@ -96,39 +96,6 @@ use schema config;
 create stage semantic_models encryption = (type = 'SNOWFLAKE_SSE');
 ```
 
-### Agent Configuration
-
-This script is needed at this time to store all of your agent information. Please add this below your above code, and then run. This creates an Agent Policy that allows you to control which roles can see which agents.
-
-```sql
-use role Snowflake_intelligence_admin_rl;
-create schema if not exists Snowflake_intelligence.agents;
-
--- Make SI agents in general discoverable to everyone.
-grant usage on schema Snowflake_intelligence.agents to role public;
-
-CREATE OR REPLACE ROW ACCESS POLICY Snowflake_intelligence.agents.agent_policy
-AS (grantee_roles ARRAY) RETURNS BOOLEAN ->
-  ARRAY_SIZE(FILTER(grantee_roles::ARRAY(VARCHAR), role -> is_role_in_session(role))) > 0;
-
--- Create an agent config table. Multiple tables can be created to give granular
--- UPDATE/INSERT permissions to different roles.
-create or replace table Snowflake_intelligence.agents.config (
-    agent_name varchar not null,
-    agent_description varchar,
-    grantee_roles array not null,
-    tools array,
-    tool_resources object,
-    tool_choice object,
-    response_instruction varchar,
-    sample_questions array,
-    constraint pk_agent_name primary key (agent_name)
-)
-with row access policy Snowflake_intelligence.agents.agent_policy on (grantee_roles);
-
-grant select on table Snowflake_intelligence.agents.config to role public;
-```
-
 Currently, Snowflake Intelligence uses your DEFAULT ROLE, so we need to change our default role to the role we created from the above script. This role is called: `Snowflake_intelligence_admin_rl`. This way, all objects will be owned by the correct role, and we will not run into permission issues.
 
 Go ahead and change your default role to the newly created role. You can do this by selecting your name at the bottom and going to switch role, and choosing the `Snowflake_intelligence_admin_rl`, and when you hover over it, choose set as default, and also make sure this is your selected role.
