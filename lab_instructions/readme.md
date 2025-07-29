@@ -134,6 +134,7 @@ Currently, Snowflake Intelligence uses your DEFAULT ROLE, so we need to change o
 Go ahead and change your default role to the newly created role. You can do this by selecting your name at the bottom and going to switch role, and choosing the `Snowflake_intelligence_admin_rl`, and when you hover over it, choose set as default, and also make sure this is your selected role.
 
 ![labimages](images/image003.png)
+![labimages](images/image004.png)
 
 Go ahead and log out of your account and log back in, sometimes this resolves some of the permission issues and is a good way to check that your defaults have been set correctly.
 
@@ -147,8 +148,9 @@ For our lab, we will use some made-up festival data. To support this, we will ne
 
 Log into your Snowflake Demo Account and create a space for these tables to live through the UI. Let's create a database we will call it `SI_EVENTS_HOL` make sure to create it with the role `Snowflake_intelligence_admin_rl`:
 
-![labimages](images/image004.png)
+
 ![labimages](images/image005.png)
+![labimages](images/image006.png)
 
 Let's create the tables we need for this lab. There are a total of 4 tables needed for this lab, and they can all be created the same way by creating a table from a file in Snowflake. Please repeat the following steps for all four tables:
 
@@ -161,20 +163,18 @@ We will load these tables into the public schema.
 
 To load a table from a file in Snowsight, go into the `SI_Events` database we created, go to the Public schema, and go into tables, and then click the create button on the top right to create a table from a file:
 
-![labimages](images/image006.png)
 ![labimages](images/image007.png)
 
 Name each table the same name as the file you unzipped:
-
+![labimages](images/image008.png)
 Open the View Options section in the file format area and make sure that the header is the first line of the document:
 
-![labimages](images/image008.png)
-![labimages](images/image009.png)
+
 ![labimages](images/image010.png)
+![labimages](images/image011.png)
 
 Repeat this for all 4 files so you have all 4 tables needed for the lab. When you are complete, you should see the following under tables in the public schema:
-
-![labimages](images/image011.png)
+![labimages](images/image013.png)
 
 -----
 
@@ -184,14 +184,13 @@ What is an agent? Agentic AI is the buzzword of 2025, but with Snowflake agents,
 
 Go to Snowflake, and the Agents section should now work with the config tables we created above. The page will keep attempting to redraw at this point, but that is expected for now. Go ahead and click on Create Agent.
 
-![labimages](images/image013.png)
-![labimages](images/image014.png)
+![labimages](images/image015.png)
 
 Let's create a very simple agent. Let's name it **Claude**. Let's give it a Display name of **Claude** as well.
-
+![labimages](images/image016.png)
 Refresh the screen, and we will see the new agent created:
+![labimages](images/image017.png)
 
-![labimages](images/image015.png)
 
 -----
 
@@ -199,29 +198,16 @@ Refresh the screen, and we will see the new agent created:
 
 To easily navigate while using the Snowflake Intelligence application, open a new browser tab specifically for Snowsight. This will allow you to switch between the standard Snowsight interface and the Snowflake Intelligence application, which you can access via the Snowflake Intelligence link. After clicking the link, the navigation will change to focus on Snowflake Intelligence.
 
-![labimages](images/image016.png)
+![labimages](images/image018.png)
 
 Now we can see our agent that we created in the dropdown and be able to interact with Snowflake intelligence easily:
 
-![labimages](images/image017.png)
+![labimages](images/image019.png)
 
 I can also upload files as needed to have Claude look at the file and complete my analysis.
 
 Go ahead and query Snowflake Intelligence. Let's ask this: What can you tell me about the company Snowflake?
-
-> What can you tell me about the company Snowflake?
->
-> Snowflake is a cloud-based data warehousing company founded in 2012 by Benoit Dageville, Thierry Cruanes, and Marcin Żukowski. Here are key points about Snowflake:
->
-> 1.  Core Business:
->       * Provides cloud-based data storage and analytics services
->       * Allows companies to store and analyze data using cloud-based hardware and software
->       * Offers data warehouse-as-a-service running on major cloud platforms (AWS, Microsoft Azure, Google Cloud)
-> 2.  Key Features:
->       * Separation of storage and compute resources
->       * Ability to share data securely across organizations
->       * Automatic scaling and performance optimization
->       * Support for structured and semi-structured data
+![labimages](images/image020.png)
 
 We have currently developed a basic agent lacking access to data within your Snowflake account. It solely interacts with Claude. To enhance its intelligence, we need to integrate a semantic model and connect it to the agent, thereby providing improved context.
 
@@ -229,41 +215,41 @@ We have currently developed a basic agent lacking access to data within your Sno
 
 ## Step 5: Create a Semantic Model
 
-Let's now build a more intelligent agent that analyzes the data within Snowflake by utilizing our semantic layer. Lets create a semantic view using cortex analyst:
+Let's now build a more intelligent agent that analyzes the data within Snowflake by utilizing our semantic layer. 
 
-![labimages](images/image018.png)
-![labimages](images/image019.png)
+Lets create a semantic view using cortex analyst:
+![labimages](images/image021.png)
+
+Go ahead and select create new view:
+![labimages](images/image022.png)
+![labimages](images/image023.png)
 
 We can choose the SI\_EVENTS\_HOL database and PUBLIC schema we created earlier. Then we can select Semantic Views and enter the following name and description:
 
   * **Name:** `music_festival`
-  * **Description:** This has information on music festivals, including locations, events, and ticket sales
-
-![labimages](images/image020.png)
+  * **Description:** `This has information on music festivals, including locations, events, and ticket sales`
 
 Let's select our tables from the SI\_EVENTS\_HOL data that we imported at the beginning of the lab:
-
-![labimages](images/image021.png)
+![labimages](images/image024.png)
 
 Then we can select the columns to choose. Let's just select all columns by choosing the top checkbox:
-
-![labimages](images/image022.png)
+![labimages](images/image025.png)
 
 ### View the Results
 
 When we click 'Create and Save' it will generate a starter semantic model for us:
 
-![labimages](images/image023.png)
+![labimages](images/image026.png)
 
 We can see that it has already created a description as well as some other details, like synonyms. Let's go ahead and add 'show' and 'concert' to the list of synonyms for EVENT\_NAME in the EVENTS table:
 
-![labimages](images/image024.png)
+![labimages](images/image027.png)
 
 ### Move Columns
 
 The model incorrectly identified EVENT\_ID as a fact due to its numerical data type, but it is actually a dimensional column. This can be easily corrected by moving it to the dimensions section in the edit menu. It is crucial to review and adjust the model after Snowflake's initial column categorization.
 
-![labimages](images/image025.png)
+
 
 We will need to do this for the following incorrectly identified columns:
 
@@ -287,7 +273,7 @@ We also need to assign unique values option to primary keys. We will do this for
 
 This is done by editing each dimension and then checking the box for unique identifier:
 
-![labimages](images/image026.png)
+
 
 Do this for all the listed tables above. Then you will need to save the semantic model and refresh the page.
 
@@ -295,7 +281,7 @@ Do this for all the listed tables above. Then you will need to save the semantic
 
 I can test this model right now by going to the side window and putting in the following prompt: `What are the different events in Europe`
 
-![labimages](images/image027.png)
+
 
 Then it will go against my model and then write SQL, and then execute that SQL against my model.
 
