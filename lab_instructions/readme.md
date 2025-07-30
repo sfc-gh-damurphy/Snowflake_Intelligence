@@ -26,7 +26,7 @@ This will allow you to see the needed navigation in Snowsight.
 
 ### A few things to note:
 
-  * If you go into Snowflake Intelligence at this point, it will just spin forever because we have not set up the needed parts. This will change in the future, but at this time, this is the case.
+  * If you go into Snowflake Intelligence at this point, it will say "No agents created." 
   * At this time, Snowflake Intelligence (SI) will utilize your default role. You need to make sure this is set to the role we will create in the lab (directions below).
   * Snowflake Intelligence will also utilize your default warehouse; you must set this up for SI to work.
 
@@ -34,10 +34,8 @@ This will allow you to see the needed navigation in Snowsight.
 
 Users in Snowflake Intelligence will map to Snowflake users. Over time, we will move the UI out of Snowflake Snowsight and into a standalone experience (ai.Snowflake.com), but even there, Snowflake roles are planned to be leveraged for configuration. Users of Snowflake Intelligence need a few layers of permissions:
 
-1.  They need permission to SELECT on the config table that holds the agent's configuration (this will likely disappear in the future, as we'll store configuration automatically).
-2.  They need permissions on the temp schema, which is utilized for different operations like file upload/parsing (this will also likely disappear in the future).
-3.  They need permission to the underlying Cortex Search Service and the ability to call Cortex Analyst.
-4.  They need permission for any underlying data surfaced by an agent.
+1.  They need permission to the underlying Cortex Search Service and the ability to call Cortex Analyst.
+1.  They need permission for any underlying data surfaced by an agent.
 
 -----
 
@@ -48,62 +46,18 @@ Users in Snowflake Intelligence will map to Snowflake users. Over time, we will 
 
 ### Metadata Objects
 
-Please create a new worksheet and run this script to create the roles and database objects needed to store Snowflake Intelligence metadata. This will not be needed in the future.
+Please create a new worksheet and run this script to create the database and schema needed to organize agents that surface in Snowflake Intelligence.
 
 ```sql
-use role accountadmin;
+create database snowflake_intelligence;
+create schema snowflake_intelligence.agents;
 
---ability to run across cloud if claude is not in your region:
-ALTER ACCOUNT SET CORTEX_ENABLED_CROSS_REGION = 'ANY_REGION';
+-- make sure anyone in the account can SEE agents
+grant usage on schema snowflake_intelligence.agents to role public;
 
--- Create roles
-create role Snowflake_intelligence_admin_rl;
-
---need to add ability to create databases
-GRANT CREATE DATABASE ON ACCOUNT TO ROLE Snowflake_intelligence_admin_rl;
-
--- Warehouse that is going to be used for Cortex Search Service creation as well as query execution.
-create warehouse Snowflake_intelligence_wh with warehouse_size = 'X-SMALL';
-grant usage on warehouse Snowflake_intelligence_wh to role Snowflake_intelligence_admin_rl;
-
--- Create a database. This will hold configuration and other objects to support Snowflake Intelligence.
-create database Snowflake_intelligence;
-grant ownership on database Snowflake_intelligence to role Snowflake_intelligence_admin_rl;
-
--- Dynamically grant role 'Snowflake_intelligence_admin_rl' to the current user
-DECLARE
-  sql_command STRING;
-BEGIN
-  sql_command := 'GRANT ROLE Snowflake_intelligence_admin_rl TO USER "' || CURRENT_USER() || '"';
-  EXECUTE IMMEDIATE sql_command;
-  RETURN 'Role Snowflake_intelligence_admin_rl granted successfully to ' || CURRENT_USER();
-END;
+-- optional - you can grant other roles the ability to create agents
+-- grant create agent on schema snowflake_intelligence.agents to role <some_role>;
 ```
-
-### Set up stages and tables for configuration.
-
-```sql
-use role Snowflake_intelligence_admin_rl;
-use database Snowflake_intelligence;
-
--- Set up a temp schema for file upload (only temporary stages will be created here).
-create or replace schema Snowflake_intelligence.temp;
-grant usage on schema Snowflake_intelligence.temp to role public;
-
--- OPTIONAL: Set up stages and tables for configuration you can have your semantic models be anywhere else, just make sure that the users have grants to them
-create schema if not exists config;
-use schema config;
-create stage semantic_models encryption = (type = 'SNOWFLAKE_SSE');
-```
-
-Currently, Snowflake Intelligence uses your DEFAULT ROLE, so we need to change our default role to the role we created from the above script. This role is called: `Snowflake_intelligence_admin_rl`. This way, all objects will be owned by the correct role, and we will not run into permission issues.
-
-Go ahead and change your default role to the newly created role. You can do this by selecting your name at the bottom and going to switch role, and choosing the `Snowflake_intelligence_admin_rl`, and when you hover over it, choose set as default, and also make sure this is your selected role.
-
-![labimages](images/image003.png)
-![labimages](images/image004.png)
-
-Go ahead and log out of your account and log back in, sometimes this resolves some of the permission issues and is a good way to check that your defaults have been set correctly.
 
 -----
 
