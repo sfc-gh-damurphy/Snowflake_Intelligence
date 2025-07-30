@@ -96,19 +96,16 @@ Internally helpful setup requirements:
 
 Common errors and resolutions:
 
-**Issue:**  Permissions issues
-**Cause:**  Using the incorrect Role
-**Solution:** Make sure your default role is setup correctly and has the correct access to the warehouses that are used to run the agents
+> - **Issue:**  Permissions issues
+> - **Cause:**  Using the incorrect Role
+> - **Solution:** Make sure your default role is setup correctly and has the correct access to the warehouses that are used to run the agents
 
-**Issue:**  Agent Stuck on Initialization
-**Cause:**  After creating the agent, something is incorrect and the agent stays in 'initializion' state
-**Solution:** Try running the following sql to understand what is going on with the agent as there is an error column:
+> - **Issue:**  Agent Stuck on Initialization
+> - **Cause:**  After creating the agent, something is incorrect and the agent stays in 'initializion' state
+> - **Solution:** Try running the following sql to understand what is going on with the agent as there is an error column:
 ```sql
 DESC CORTEX SEARCH SERVICE FESTIVAL_CONTRACT_SEARCH 
 ```
-
-Provide internal Slack channels or support queue links.
-
 ---
 
 ## 🧹 Cleanup & Cost-Stewardship Procedures
@@ -119,8 +116,6 @@ Provide internal Slack channels or support queue links.
 ```sql
 drop database SI_EVENTS_HOL
 ```
-
-
 ---
 
 ## 🔗 Links to Internal Resources & Helpful Documents
