@@ -33,10 +33,10 @@ CONTEXT_HEADERS = (
 AS 'https://awy6hshxy4.execute-api.us-west-2.amazonaws.com/dev/edu_dora/greeting';
 
 SELECT util_db.public.se_greeting(
-  '<snowflake email>',
-  '<First Name>',
+  'snowflake email',
+  'First Name',
   '',
-  '<Last Name>'
+  'Last Name'
 );
 
 -- Create grading function
