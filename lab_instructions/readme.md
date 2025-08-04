@@ -434,6 +434,8 @@ Customers can now easily build a chatbot-like interface for analysts and search 
 
 ## Step 12: Validate Using DORA
 
+**Please only complete this if you are a snowflake employee and in the SE organization**
+
 Congrats\! You have completed the lab. Please run the following commands in Snowsight to confirm your completion.
 
 - [Greeter Script for DORA](/config/SE_GREETER.sql)
