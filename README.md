@@ -36,9 +36,11 @@ This lab explores accessing festival data (ticket sales, customer details, event
 
 Provide a brief agenda to help SEs understand pacing:
 
-- **Phase 1 (Env setup):** ~5 min
-- **Phase 2 ([creating sematic and cortex search](/lab_instructions/readme.md)):** ~30 min
-- **Phase 3 (Testing Results in Snowflake Intelligence):** ~10 min
+- [Snowflake Intelligence Lab](/lab_instructions/readme.md)
+
+- **Phase 1 Env setup):** ~5 min
+- **Phase 2 creating sematic and cortex search:** ~30 min
+- **Phase 3 Testing Results in Snowflake Intelligence:** ~10 min
   
 ---
 
@@ -48,7 +50,6 @@ Provide a brief agenda to help SEs understand pacing:
 - [Suggested Discovery Questions](#-suggested-discovery-questions)
 - [Repository Structure](#-repository-structure)
 - [Prerequisites & Setup Details](#-prerequisites--setup-details)
-- [Estimated Lab Timeline](#-estimated-lab-timeline)
 - [Troubleshooting & FAQ](#%EF%B8%8F-troubleshooting--faq)
 - [Cleanup & Cost-Stewardship Procedures](#-cleanup--cost-stewardship-procedures)
 - [Links to Internal Resources & Helpful Documents](#-links-to-internal-resources--helpful-documents)
