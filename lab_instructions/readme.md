@@ -30,8 +30,6 @@ This will allow you to see the needed navigation in Snowsight.
   * At this time, Snowflake Intelligence (SI) will utilize your default role. You need to make sure this is set to the role we will create in the lab (directions below).
   * Snowflake Intelligence will also utilize your default warehouse; you must set this up for SI to work.
 
-<img src="images/image002.png" alt="alt text" width="45%">
-
 Users in Snowflake Intelligence will map to Snowflake users. Over time, we will move the UI out of Snowflake Snowsight and into a standalone experience (ai.Snowflake.com), but even there, Snowflake roles are planned to be leveraged for configuration. Users of Snowflake Intelligence need a few layers of permissions:
 
   * They need permission to the underlying Cortex Search Service and the ability to call Cortex Analyst.
@@ -233,8 +231,8 @@ Our first relationship we will define is TICKET\_SALES to EVENT. For every EVENT
 Let's add a second relationship of customers to tickets:
 
   * **Relationship Name:** `TicketSales_to_Customers`
-  * **Left Table:** `Customers`
-  * **Right Table:** `Ticket_Sales`
+  * **Left Table:** `Ticket_Sales`
+  * **Right Table:** `Customers`
   * **Relationship Columns:** `CUSTOMER_ID` and `CUSTOMER_ID`
 
 <img src="images/image033.png" alt="alt text" width="45%">
