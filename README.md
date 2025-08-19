@@ -127,8 +127,7 @@ drop database SI_EVENTS_HOL
 
 ## 🔗 Links to Internal Resources & Helpful Documents
 
-- [Snowflake Documentation](#)
-- [Internal Wiki & Guidelines](#)
+- [Snowflake Documentation](https://docs.snowflake.com/en/user-guide/snowflake-cortex/snowflake-intelligence)
 
 ---
 
