@@ -2,8 +2,6 @@
 
 ## Step 1: Snowflake Intelligence Setup
 
-This will allow you to see the needed navigation in Snowsight.
-
 ### A few things to note:
 
   * If you go into Snowflake Intelligence at this point, it will say "No agents created."
