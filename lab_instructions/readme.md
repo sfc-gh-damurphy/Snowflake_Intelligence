@@ -2,27 +2,7 @@
 
 ## Step 1: Snowflake Intelligence Setup
 
-You will need to enable these features on your demo account. Do this by logging into the deployment (snowflake.okta.com), choosing the correct deployment for your account, and then running this command. At this time (5/15/25), this is the case, but this process will change in the future.
-
-```sql
-alter account << account locator >>
-set UI_ENABLE_AI_ML_FEATURE_19 = 'ENABLED'
-, ENABLE_DATA_TO_ANSWER=true
-, COPILOT_ORCHESTRATOR_PARAM_10='true'
-, _DP_PEP_SI = true
-, COPILOT_ORCHESTRATOR_PARAM_13='true'
-, UI_ENABLE_AI_ML_FEATURE_29 = 'ENABLED'
-, FEATURE_CORTEX_AGENT_ENTITY = 'ENABLED'
-, CORTEX_REST_DATA_AGENT_API_ENABLE = true
-, _DP_PEP_SI_ADMIN = true
-, _DP_PEP_SI_ADMIN_CHAT = true
-, _DP_PEP_SI_ENABLE_AGENT_OBJECTS = true
-, parameter_comment = 'Enable Snowflake Intelligence SE Demo';
-```
-
 This will allow you to see the needed navigation in Snowsight.
-
-<img src="images/image001.png" alt="alt text" width="45%">
 
 ### A few things to note:
 
