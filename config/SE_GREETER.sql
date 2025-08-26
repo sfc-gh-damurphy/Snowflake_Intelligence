@@ -32,12 +32,18 @@ CONTEXT_HEADERS = (
 )
 AS 'https://awy6hshxy4.execute-api.us-west-2.amazonaws.com/dev/edu_dora/greeting';
 
+------------------------------------------------------------
+---PLEASE EDIT to be your email, first name and last name---
+------------------------------------------------------------
+
 SELECT util_db.public.se_greeting(
   'snowflake email',
   'First Name',
   '',
   'Last Name'
 );
+
+------------------------------------------------------------
 
 -- Create grading function
 CREATE OR REPLACE EXTERNAL FUNCTION util_db.public.se_grader(
