@@ -41,7 +41,7 @@ grant usage on schema snowflake_intelligence.agents to role public;
 
 For our lab, we will use some made-up festival data. To support this, we will need to load multiple tables. Please go to the folder and get all the files listed there.
 
-[Snowflake Intelligence Festival Data](https://www.google.com/search?q=/data)
+[Snowflake Intelligence Festival Data](/data/)
 
 Log into your Snowflake Demo Account and create a space for these tables to live through the UI. Let's create a database we will call it `SI_EVENTS_HOL`:
 
