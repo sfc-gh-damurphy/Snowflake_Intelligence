@@ -278,7 +278,7 @@ Then choose tools and add the semantic model you created from earlier:
   * Choose the database and schema where we created it (SI\_EVENTS\_HOL.PUBLIC)
   * Choose the Semantic View we created: MUSIC\_FESTIVAL
   * Choose the warehouse: Snowflake\_Intelligence\_WH
-  * Choose the Query Timeout: 600
+  * Choose the Query Timeout: 300
   * Write a description: This is our festival data that we have stored in snowflake in tables and structured data
 
 Click Add the Semantic model
